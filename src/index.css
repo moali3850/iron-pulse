@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Design tokens taken from the Figma variables (Primitives → Color) */
+@theme {
+  --font-sans:
+    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  
+
+
+
+--color-ink: #080808;
+--color-panel: #141414;
+--color-raised: #202020;
+--color-line: #303030;
+--color-disabled: #414141;
+
+--color-accent: #D7FF00;
+--color-accent-hover: #E8FF66;
+--color-accent-press: #B5D900;
+
+--color-soft: #B8B8B8;
+--color-muted: #858585;
+
+--color-danger: #E54848;
+--color-success: #45D483;
+
+--shadow-glow: 0 12px 32px rgba(215, 255, 0, 0.18);
+--shadow-glow-lg: 0 16px 40px rgba(215, 255, 0, 0.25);
+--shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.65);
+
+
+
+
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-ink);
+    color: #fff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+}
+
+/* Scroll reveal (fade + slide up). Disabled for reduced-motion users. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
